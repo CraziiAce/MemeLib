@@ -1,5 +1,5 @@
   
-__version__ = "0.1.0-5"
+__version__ = "0.0.3"
 
 from memelib.api import DankMemeClient
-from memelib import errors
+from memelib.errors import *
