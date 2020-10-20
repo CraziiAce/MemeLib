@@ -3,7 +3,6 @@ import random
 import json
 
 from memelib.errors import *
-from memelib.cache import MemeCacher
 
 class DankMemeClient:
     def __init__(self, use_reddit_for_memes: bool = True, reddit_user_agent:str = "MemeLsib"):
@@ -46,11 +45,5 @@ class DankMemeClient:
         elif not self.usereddit:
             return("Still in progress")
             raise SubredditNotFoundError("You didn't specify a subreddit")
-class CachedDankMemeClient:
-    """
-    A client to get memes from various api's, but this uses caching to attempt to make it so you don't get repeat memes.
 
-
-    Note: In it's current development phase, this is *very* slow, and takes up lots of RAM.
-    """
 
