@@ -18,7 +18,8 @@ class DankMemeClient:
         self.usereddit = use_reddit_for_memes
     def meme(self, subreddit = None):
         if self.usereddit and subreddit:
-            r = requests.request("GET", f"https://reddit.com/r/{subreddit}/random.json", headers={"user-agent": self.agent}).json()
+            r = requests.request("GET", f"https://reddit.com/r/{subreddit}/random.json", headers={"user-agent": self.agent})
+            req = r.json()
             if r.status_code != 200:
                 if r.status_code == 429:
                     raise RateLimitError("Uh-oh, it looks like you were ratelimited! Try changing your user agent by passing it in the `DankMemeClient` call.")
@@ -30,13 +31,13 @@ class DankMemeClient:
                     raise RedditApiError(f"Reddit's API returned status code {r.status_code}")
                     return None
             data = {
-                "title" : r[0]['data']['children'][0]['data']['title'],
-                "author" : f"u/{r[0]['data']['children'][0]['data']['author']}",
-                "subreddit" : r[0]['data']['children'][0]['data']['subreddit_name_prefixed'],
-                "upvotes" : r[0]['data']['children'][0]['data']['ups'],
-                "comments" : r[0]['data']['children'][0]['data']['num_comments'],
-                "img_url" : r[0]['data']['children'][0]['data']['url'],
-                "post_url" : f"https://reddit.com{r[0]['data']['children'][0]['data']['permalink']}"
+                "title" : req[0]['data']['children'][0]['data']['title'],
+                "author" : req"u/{r[0]['data']['children'][0]['data']['author']}",
+                "subreddit" : req[0]['data']['children'][0]['data']['subreddit_name_prefixed'],
+                "upvotes" : req[0]['data']['children'][0]['data']['ups'],
+                "comments" : req[0]['data']['children'][0]['data']['num_comments'],
+                "img_url" : req[0]['data']['children'][0]['data']['url'],
+                "post_url" : f"https://reddit.com{req[0]['data']['children'][0]['data']['permalink']}"
             }
             return data
         elif self.usereddit and not subreddit:
@@ -45,5 +46,3 @@ class DankMemeClient:
         elif not self.usereddit:
             return("Still in progress")
             raise SubredditNotFoundError("You didn't specify a subreddit")
-
-
