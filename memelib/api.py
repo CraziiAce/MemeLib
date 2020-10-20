@@ -5,7 +5,7 @@ import json
 from memelib.errors import *
 
 class DankMemeClient:
-    def __init__(self, use_reddit_for_memes: bool = True, reddit_user_agent:str = "MemeLsib"):
+    def __init__(self, use_reddit_for_memes: bool = True, reddit_user_agent:str = "MemeLib"):
         self.memes = {
             "random":"meme()"
         }
@@ -32,7 +32,7 @@ class DankMemeClient:
                     return None
             data = {
                 "title" : req[0]['data']['children'][0]['data']['title'],
-                "author" : req"u/{r[0]['data']['children'][0]['data']['author']}",
+                "author" : f"u/{req[0]['data']['children'][0]['data']['author']}",
                 "subreddit" : req[0]['data']['children'][0]['data']['subreddit_name_prefixed'],
                 "upvotes" : req[0]['data']['children'][0]['data']['ups'],
                 "comments" : req[0]['data']['children'][0]['data']['num_comments'],
@@ -46,3 +46,5 @@ class DankMemeClient:
         elif not self.usereddit:
             return("Still in progress")
             raise SubredditNotFoundError("You didn't specify a subreddit")
+
+
