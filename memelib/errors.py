@@ -7,3 +7,6 @@ class RedditApiError(MemeLibExeception):
 class SubredditNotFoundError(RedditApiError):
     """That subreddit wasn't found"""
     pass
+class RateLimitError(RedditApiError):
+    """The Reddit API returned 429"""
+    pass
