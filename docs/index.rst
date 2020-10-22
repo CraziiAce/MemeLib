@@ -12,8 +12,6 @@ Welcome to MemeLib's documentation!
 
    installation
 
-
-
 Indices and tables
 ==================
 
