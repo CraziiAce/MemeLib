@@ -19,3 +19,38 @@
 <a href="https://github.com/craziiace/memelib">
   <img src="https://img.shields.io/tokei/lines/github/craziiace/memelib?style=flat-square&color=g">
 </a>
+
+### Installation
+
+MemeLib is installed through PyPi
+
+```
+pip install MemeLib
+```
+
+### Usage
+
+```py
+from memelib.api import DankMemeClient
+
+myclient = DankMemeClient()
+
+myclient.meme(subreddit="dankmemes")
+```
+That returns a dict.
+```
+{'title': 'Creeping in', 'author': 'u/charles2x2', 'subreddit': 'r/dankmemes', 'upvotes': 117, 'comments': 6, 'img_url': 'https://i.redd.it/c1onsrvplnu51.jpg', 'post_url': 'https://reddit.com/r/dankmemes/comments/jg0ax7/creeping_in/'}
+```
+Params for the `DankMemeClient` call:
+
+`reddit_user_agent`: str | The reddit user agent. Preferrably, this would be the name of your application.
+
+`return_embed`: bool | Whether to return a Discord.py embed.
+
+`embed_color` | A color for the discord embed. Must be in 0xFFFFFF format.
+
+If `return_embed` is true, this will automatically return a nicely formatted embed.
+
+Example:
+
+<img src="hhttps://craziiace.reeee.ee/GfxTbo.png">
