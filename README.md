@@ -35,7 +35,7 @@ from memelib.api import DankMemeClient
 
 myclient = DankMemeClient()
 
-myclient.meme(subreddit="dankmemes")
+await myclient.meme(subreddit="dankmemes")
 ```
 That returns a dict.
 ```
