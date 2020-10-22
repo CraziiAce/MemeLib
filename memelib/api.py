@@ -26,11 +26,11 @@ class DankMemeClient:
             async with aiohttp.ClientSession() as session:
                 async with session.get(f"https://reddit.com/r/{subreddit}/random.json", headers={"user-agent": self.agent}) as r:
                     res = await r.json()
-            if r.status_code != 200:
-                if r.status_code == 429:
+            if r.status != 200:
+                if r.status == 429:
                     raise RateLimitError("Uh-oh, it looks like you were ratelimited! Try changing your user agent by passing it in the `DankMemeClient` call.")
                     return None
-                elif r.status_code == 404:
+                elif r.status == 404:
                     raise SubredditNotFoundError("Reddit's API returned a 404 error. Make sure the subreddit that you passed does not include the `r/` in front of it.")
                     return None
                 else:
@@ -55,6 +55,7 @@ class DankMemeClient:
                     description = f"{res['author']} | Can't see the image? [Click Here.]({res['img_url']})"
                 )
                 embed.set_image(url=res['image_url'])
+                embed.set_footer(text=f"{res['upvotes']} 👍 | {res['comments']} 💬")
                 return embed
         elif self.usereddit and not subreddit:
             subreddit = random.choice(self.meme_subreddits)
@@ -64,3 +65,5 @@ class DankMemeClient:
         elif not self.usereddit:
             return("Still in progress")
             raise SubredditNotFoundError("You didn't specify a subreddit")
+
+
