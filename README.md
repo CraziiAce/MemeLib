@@ -53,4 +53,4 @@ If `return_embed` is true, this will automatically return a nicely formatted emb
 
 Example:
 
-<img src="hhttps://craziiace.reeee.ee/GfxTbo.png">
+<img src="https://craziiace.reeee.ee/GfxTbo.png">
