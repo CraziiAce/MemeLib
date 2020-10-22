@@ -1,4 +1,4 @@
-import requests
+import aiohttp
 import random
 import json
 
@@ -16,10 +16,11 @@ class DankMemeClient:
         ]
         self.agent = reddit_user_agent
         self.usereddit = use_reddit_for_memes
-    def meme(self, subreddit = None):
+    async def meme(self, subreddit = None):
         if self.usereddit and subreddit:
-            r = requests.request("GET", f"https://reddit.com/r/{subreddit}/random.json", headers={"user-agent": self.agent})
-            req = r.json()
+            async with aiohttp.ClientSession() as session:
+                async with session.get(f"https://reddit.com/r/{subreddit}/random.json", headers={"user-agent": self.agent}) as r:
+                    req = await r.json()
             if r.status_code != 200:
                 if r.status_code == 429:
                     raise RateLimitError("Uh-oh, it looks like you were ratelimited! Try changing your user agent by passing it in the `DankMemeClient` call.")
@@ -42,9 +43,9 @@ class DankMemeClient:
             return data
         elif self.usereddit and not subreddit:
             subreddit = random.choice(self.meme_subreddits)
-            r = requests.request("GET", f"https://reddit.com/r/{subreddit}/random.json", headers={"user-agent": self.agent}).json()
+            async with aiohttp.ClientSession() as session:
+                async with session.get(f"https://reddit.com/r/{subreddit}/random.json", headers={"user-agent": self.agent}) as r:
+                    req = await r.json()        
         elif not self.usereddit:
             return("Still in progress")
             raise SubredditNotFoundError("You didn't specify a subreddit")
-
-
