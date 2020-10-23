@@ -43,7 +43,7 @@ class DankMemeClient:
                 "upvotes" : res[0]['data']['children'][0]['data']['ups'],
                 "comments" : res[0]['data']['children'][0]['data']['num_comments'],
                 "img_url" : res[0]['data']['children'][0]['data']['url'],
-                "post_url" : f"https://reddit.com{req[0]['data']['children'][0]['data']['permalink']}"
+                "post_url" : f"https://reddit.com{res[0]['data']['children'][0]['data']['permalink']}"
             }
             if not self.return_embed:
                 return data
