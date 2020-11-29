@@ -7,6 +7,7 @@ import discord
 from memelib.errors import *
 
 class DankMemeClient:
+    """The client to get memes from"""
     def __init__(self, use_reddit_for_memes: bool = True, reddit_user_agent:str = "MemeLib", return_embed: bool = False, embed_color = None):
         """Initialize a client. The embed color must be on 0xFFFFFF format"""
         self.memes = {
@@ -43,19 +44,19 @@ class DankMemeClient:
                 "upvotes" : res[0]['data']['children'][0]['data']['ups'],
                 "comments" : res[0]['data']['children'][0]['data']['num_comments'],
                 "img_url" : res[0]['data']['children'][0]['data']['url'],
-                "post_url" : f"https://reddit.com{res[0]['data']['children'][0]['data']['permalink']}"
+                "post_url" : f"https://reddit.com{req[0]['data']['children'][0]['data']['permalink']}"
             }
             if not self.return_embed:
                 return data
             else:
                 embed = discord.Embed(
-                    title = res['title'],
-                    url = res['post_url'],
+                    title = data['title'],
+                    url = data['post_url'],
                     color = self.embed_color,
-                    description = f"{res['author']} | Can't see the image? [Click Here.]({res['img_url']})"
+                    description = f"{data['author']} | Can't see the image? [Click Here.]({data['img_url']})"
                 )
-                embed.set_image(url=res['image_url'])
-                embed.set_footer(text=f"{res['upvotes']} 👍 | {res['comments']} 💬")
+                embed.set_image(url=data['image_url'])
+                embed.set_footer(text=f"{data['upvotes']} 👍 | {data['comments']} 💬")
                 return embed
         elif self.usereddit and not subreddit:
             subreddit = random.choice(self.meme_subreddits)
