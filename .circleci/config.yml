@@ -26,5 +26,5 @@ jobs:
       - run:
           name: Run Tests
           command: |
-          . venv/bin/activate
-          pytest tests/test_meme.py
+            . venv/bin/activate
+            pytest tests/test_meme.py
