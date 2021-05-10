@@ -49,7 +49,7 @@ class DankMemeClient:
                     )
                     return None
             data = {
-                "title": res[0]["data"]["children"][0]["data"][0]["title"],
+                "title": res[0]["data"]["children"][0]["data"]["title"],
                 "author": f"u/{res[0]['data']['children'][0]['data']['author']}",
                 "subreddit": res[0]["data"]["children"][0]["data"][
                     "subreddit_name_prefixed"
@@ -72,7 +72,7 @@ class DankMemeClient:
                 ) as r:
                     res = await r.json()
                 data = {
-                    "title": res[0]["data"]["children"][0]["data"][0]["title"],
+                    "title": res[0]["data"]["children"][0]["data"]["title"],
                     "author": f"u/{res[0]['data']['children'][0]['data']['author']}",
                     "subreddit": res[0]["data"]["children"][0]["data"][
                         "subreddit_name_prefixed"
@@ -114,7 +114,7 @@ class DankMemeClient:
                     )
                     return None
             data = {
-                "title": res[0]["data"]["children"][0]["data"][0]["title"],
+                "title": res[0]["data"]["children"][0]["data"]["title"],
                 "author": f"u/{res[0]['data']['children'][0]['data']['author']}",
                 "subreddit": res[0]["data"]["children"][0]["data"][
                     "subreddit_name_prefixed"
@@ -136,7 +136,7 @@ class DankMemeClient:
             )
             res = r.json()
             data = {
-                "title": res[0]["data"]["children"][0]["data"][0]["title"],
+                "title": res[0]["data"]["children"][0]["data"]["title"],
                 "author": f"u/{res[0]['data']['children'][0]['data']['author']}",
                 "subreddit": res[0]["data"]["children"][0]["data"][
                     "subreddit_name_prefixed"
