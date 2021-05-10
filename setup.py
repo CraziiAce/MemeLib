@@ -1,5 +1,7 @@
 import setuptools
 
+requirements = ['aiohttp', 'discord']
+
 from os import path
 this_directory = path.abspath(path.dirname(__file__))
 with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
@@ -21,4 +23,5 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     python_requires='>=3.6',
+    install_requires=requirements,
 )
