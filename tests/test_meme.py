@@ -8,4 +8,4 @@ def get_meme():
 
 
 def test_answer():
-    assert str(get_meme) == True
+    assert str(get_meme) is True

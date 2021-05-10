@@ -72,7 +72,7 @@ class DankMemeClient:
                 ) as r:
                     res = await r.json()
                 data = {
-                    "title": res[0]["data"]["children"][0]["data"]["title"],
+                    "title": res[0]["data"]["children"][0]["data"][0]["title"],
                     "author": f"u/{res[0]['data']['children'][0]['data']['author']}",
                     "subreddit": res[0]["data"]["children"][0]["data"][
                         "subreddit_name_prefixed"
