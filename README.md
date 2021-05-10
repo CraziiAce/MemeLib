@@ -35,9 +35,10 @@ from memelib.api import DankMemeClient
 
 myclient = DankMemeClient()
 
-await myclient.meme(subreddit="dankmemes")
+await myclient.async_meme(subreddit="dankmemes")
 ```
 That returns a dict.
+(note: there is also a synchronous function: DankMemeClient.meme())
 ```
 {'title': 'Creeping in', 'author': 'u/charles2x2', 'subreddit': 'r/dankmemes', 'upvotes': 117, 'comments': 6, 'img_url': 'https://i.redd.it/c1onsrvplnu51.jpg', 'post_url': 'https://reddit.com/r/dankmemes/comments/jg0ax7/creeping_in/'}
 ```

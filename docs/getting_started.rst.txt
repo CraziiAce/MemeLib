@@ -13,11 +13,11 @@ Create an instance of the client:
 
     myclient = DankMemeClient()
 
-    await myclient.meme(subreddit="dankmemes")
+    await myclient.async_meme(subreddit="dankmemes")
 
 That returns a dict.
 ``subreddit="dankmemes"`` can also be left out, or dankmemes can be substituted for another subreddit of your choice
-
+There is also a synchronous function, DankMemeClient.meme()
 ::
 
     {'title': 'Creeping in', 'author': 'u/charles2x2', 'subreddit': 'r/dankmemes', 'upvotes': 117, 'comments': 6, 'img_url': 'https://i.redd.it/c1onsrvplnu51.jpg', 'post_url': 'https://reddit.com/r/dankmemes/comments/jg0ax7/creeping_in/'}

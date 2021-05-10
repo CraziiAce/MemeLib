@@ -1,6 +1,6 @@
 import setuptools
 
-requirements = ["aiohttp", "discord"]
+requirements = ["aiohttp", "discord", "requests"]
 
 from os import path
 
