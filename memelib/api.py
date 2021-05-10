@@ -44,7 +44,7 @@ class DankMemeClient:
                 "upvotes" : res[0]['data']['children'][0]['data']['ups'],
                 "comments" : res[0]['data']['children'][0]['data']['num_comments'],
                 "img_url" : res[0]['data']['children'][0]['data']['url'],
-                "post_url" : f"https://reddit.com{req[0]['data']['children'][0]['data']['permalink']}"
+                "post_url" : f"https://reddit.com{res[0]['data']['children'][0]['data']['permalink']}"
             }
             if not self.return_embed:
                 return data
@@ -66,5 +66,3 @@ class DankMemeClient:
         elif not self.usereddit:
             return("Still in progress")
             raise SubredditNotFoundError("You didn't specify a subreddit")
-
-
