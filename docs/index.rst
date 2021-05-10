@@ -11,7 +11,8 @@ Welcome to MemeLib's documentation!
    :caption: Contents:
 
    installation
-
+   getting_started
+   
 Indices and tables
 ==================
 
