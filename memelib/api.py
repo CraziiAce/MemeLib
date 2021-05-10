@@ -4,6 +4,7 @@ import random
 import discord
 
 from memelib.errors import *
+from memelib._utils import _format
 
 
 class DankMemeClient:
@@ -62,15 +63,7 @@ class DankMemeClient:
             if not self.return_embed:
                 return data
             else:
-                embed = discord.Embed(
-                    title=data["title"],
-                    url=data["post_url"],
-                    color=self.embed_color,
-                    description=f"{data['author']} | Can't see the image? [Click Here.]({data['img_url']})",
-                )
-                embed.set_image(url=data["image_url"])
-                embed.set_footer(text=f"{data['upvotes']} 👍 | {data['comments']} 💬")
-                return embed
+                return _format(data, self.embed_color)
         elif self.usereddit and not subreddit:
             subreddit = random.choice(self.meme_subreddits)
             async with aiohttp.ClientSession() as session:
@@ -90,7 +83,10 @@ class DankMemeClient:
                     "img_url": res[0]["data"]["children"][0]["data"]["url"],
                     "post_url": f"https://reddit.com{res[0]['data']['children'][0]['data']['permalink']}",
                 }
-                return data
+                if not self.return_embed:
+                    return data
+                else:
+                    return _format(data, self.embed_color)
         elif not self.usereddit:
             return "Still in progress"
             raise SubredditNotFoundError("You didn't specify a subreddit")
