@@ -1,5 +1,6 @@
 import discord
 
+
 def _format(data, embed_color):
     embed = discord.Embed(
         title=data["title"],

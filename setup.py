@@ -1,14 +1,15 @@
 import setuptools
 
-requirements = ['aiohttp', 'discord']
+requirements = ["aiohttp", "discord"]
 
 from os import path
+
 this_directory = path.abspath(path.dirname(__file__))
-with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
+with open(path.join(this_directory, "README.md"), encoding="utf-8") as f:
     long_description = f.read()
 
 setuptools.setup(
-    name="MemeLib", 
+    name="MemeLib",
     version="0.1.2",
     author="CraziiAce",
     author_email="teddyjraz@gmail.com",
@@ -22,6 +23,6 @@ setuptools.setup(
         "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
         "Operating System :: OS Independent",
     ],
-    python_requires='>=3.6',
+    python_requires=">=3.6",
     install_requires=requirements,
 )

@@ -2,8 +2,6 @@ import aiohttp
 import random
 import requests
 
-import discord
-
 from memelib.errors import *
 from memelib._utils import _format
 
@@ -92,9 +90,12 @@ class DankMemeClient:
             return "Still in progress"
             raise SubredditNotFoundError("You didn't specify a subreddit")
 
-    def meme(self, subreddit = None):
+    def meme(self, subreddit=None):
         if self.usereddit and subreddit:
-            r = requests.get("https://reddit.com/r/{subreddit}/random.json", headers={"user-agent": self.agent})
+            r = requests.get(
+                "https://reddit.com/r/{subreddit}/random.json",
+                headers={"user-agent": self.agent},
+            )
             res = r.json()
             if r.status_code != 200:
                 if r.status_code == 429:
@@ -129,7 +130,10 @@ class DankMemeClient:
                 return _format(data, self.embed_color)
         elif self.usereddit and not subreddit:
             subreddit = random.choice(self.meme_subreddits)
-            r = requests.get("https://reddit.com/r/{subreddit}/random.json", headers={"user-agent": self.agent})
+            r = requests.get(
+                "https://reddit.com/r/{subreddit}/random.json",
+                headers={"user-agent": self.agent},
+            )
             res = r.json()
             data = {
                 "title": res[0]["data"]["children"][0]["data"]["title"],

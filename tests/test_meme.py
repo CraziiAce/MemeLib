@@ -1,6 +1,7 @@
 import pytest
 import memelib
 
+
 def get_meme():
     client = memelib.DankMemeClient()
     return client.meme()
