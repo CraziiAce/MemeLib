@@ -1,6 +1,5 @@
 import aiohttp
 import random
-import json
 
 import discord
 
@@ -79,7 +78,19 @@ class DankMemeClient:
                     f"https://reddit.com/r/{subreddit}/random.json",
                     headers={"user-agent": self.agent},
                 ) as r:
-                    req = await r.json()
+                    res = await r.json()
+                data = {
+                    "title": res[0]["data"]["children"][0]["data"]["title"],
+                    "author": f"u/{res[0]['data']['children'][0]['data']['author']}",
+                    "subreddit": res[0]["data"]["children"][0]["data"][
+                        "subreddit_name_prefixed"
+                    ],
+                    "upvotes": res[0]["data"]["children"][0]["data"]["ups"],
+                    "comments": res[0]["data"]["children"][0]["data"]["num_comments"],
+                    "img_url": res[0]["data"]["children"][0]["data"]["url"],
+                    "post_url": f"https://reddit.com{res[0]['data']['children'][0]['data']['permalink']}",
+                }
+                return data
         elif not self.usereddit:
             return "Still in progress"
             raise SubredditNotFoundError("You didn't specify a subreddit")
