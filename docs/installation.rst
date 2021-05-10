@@ -1,7 +1,7 @@
 .. Installing MemeLib
 
 ==================
-Installing Hypyxel
+Installing MemeLib
 ==================
 
 MemeLib is installed through PyPi
@@ -16,6 +16,6 @@ Go `here <https://python.org/downloads/>`__ and download the latest version
 
 .. code-block:: none
 
-  pip install PyPi
+  pip install memelib
  
 That should install and unpack all the needed files.
