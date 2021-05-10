@@ -10,7 +10,7 @@ with open(path.join(this_directory, "README.md"), encoding="utf-8") as f:
 
 setuptools.setup(
     name="MemeLib",
-    version="0.1.2",
+    version="0.1.3",
     author="CraziiAce",
     author_email="teddyjraz@gmail.com",
     description="A python lib to get dank memes",
